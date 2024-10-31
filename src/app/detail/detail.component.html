@@ -1,0 +1,31 @@
+<div class="container mt-5" *ngIf="movie">
+    <div class="row">
+      <div class="col-md-4">
+        <img class="img-fluid rounded shadow" [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="{{ movie.title }}">
+      </div>
+      <div class="col-md-8">
+        <h1 class="mb-3">{{ movie.title }}</h1>
+        <p class="lead text-muted">{{ movie.tagline }}</p>
+        <p>{{ movie.overview }}</p>
+        
+        <ul class="list-group mt-4">
+          <li class="list-group-item">
+            <strong>Ngày phát hành: </strong> {{ movie.release_date }}
+          </li>
+          <li class="list-group-item">
+            <strong>Điểm đánh giá: </strong> {{ movie.vote_average }}/10
+          </li>
+          <li class="list-group-item">
+            <strong>Thời lượng: </strong> {{ movie.runtime }} phút
+          </li>
+          <li class="list-group-item">
+            <strong>Thể loại: </strong>
+            <span *ngFor="let genre of movie.genres; let i = index">
+              {{ genre.name }}<span *ngIf="i < movie.genres.length - 1">, </span>
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
